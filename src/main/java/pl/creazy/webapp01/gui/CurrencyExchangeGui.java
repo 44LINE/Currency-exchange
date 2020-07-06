@@ -67,7 +67,6 @@ public class CurrencyExchangeGui extends VerticalLayout{
         });
 
         exchangeButton.addClickListener(event -> {
-            //todo
             UI.getCurrent().getPage().reload();
         });
     }
