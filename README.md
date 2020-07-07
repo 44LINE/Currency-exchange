@@ -1,4 +1,4 @@
-PROBLEM SOLUTION
+PROBLEM SOLUTION 
 
 PROBLEM[PL]:
 Napisać aplikację webową, która będzie pobierała listę walut z adresu:
@@ -22,3 +22,4 @@ Endpoints:
 /currency-exchange
 /chart
 
+Spring Boot
