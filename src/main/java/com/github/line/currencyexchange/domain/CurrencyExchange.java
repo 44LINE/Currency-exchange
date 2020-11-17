@@ -9,7 +9,7 @@ import java.util.Objects;
 public final class CurrencyExchange {
 
     private final Currency fromCurrency;
-    private final Double toCurrency;
+    private final Currency toCurrency;
     private final Double givenAmount;
     private final Double returnAmount;
     private final Double exchangeRatio;
@@ -19,7 +19,7 @@ public final class CurrencyExchange {
         throw new AssertionError();
     }
 
-    public CurrencyExchange(Currency fromCurrency, Double toCurrency,
+    public CurrencyExchange(Currency fromCurrency, Currency toCurrency,
                             Double givenAmount, Double exchangeRatio, LocalDateTime lastRefreshed) {
         this.fromCurrency = fromCurrency;
         this.toCurrency = toCurrency;
@@ -33,7 +33,7 @@ public final class CurrencyExchange {
         return fromCurrency;
     }
 
-    public Double getToCurrency() {
+    public Currency getToCurrency() {
         return toCurrency;
     }
 

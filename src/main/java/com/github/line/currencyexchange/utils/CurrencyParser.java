@@ -8,7 +8,7 @@ import java.util.*;
 
 
 @Component
-public class CurrencyParser implements JsonParser<Currency> {
+public class CurrencyParser implements JsonCollectionParser<Currency>, JsonObjectParser<Currency, String>{
     @Override
     public Currency parseToObject(JSONObject jsonObject, String key) {
         String value = jsonObject.getString(key);
