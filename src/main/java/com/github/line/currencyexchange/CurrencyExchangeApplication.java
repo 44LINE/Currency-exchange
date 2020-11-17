@@ -1,4 +1,4 @@
-package com.github.linecom.example.currencyexchange;
+package com.github.line.currencyexchange;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
