@@ -1,7 +1,7 @@
 package com.github.line.currencyexchange.jfreechart;
 
 import com.github.line.currencyexchange.enums.ChartType;
-import com.github.line.currencyexchange.utils.BufferedImageBuilder;
+import com.github.line.currencyexchange.service.BufferedImageBuilder;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.annotations.XYLineAnnotation;
@@ -9,12 +9,10 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.TimeSeriesDataItem;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-@Component
 public class BufferedChartBuilder extends BufferedImageBuilder {
     private final TimeSeries timeSeries;
     private final String chartName;

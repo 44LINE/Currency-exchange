@@ -3,7 +3,6 @@ package com.github.line.currencyexchange.service;
 import static com.github.line.currencyexchange.utils.ExchangeKeys.*;
 import com.github.line.currencyexchange.domain.Currency;
 import com.github.line.currencyexchange.domain.CurrencyExchange;
-import com.github.line.currencyexchange.utils.JsonObjectParser;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 

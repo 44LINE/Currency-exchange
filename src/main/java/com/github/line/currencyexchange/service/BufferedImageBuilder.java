@@ -1,4 +1,4 @@
-package com.github.line.currencyexchange.utils;
+package com.github.line.currencyexchange.service;
 
 import java.awt.image.BufferedImage;
 

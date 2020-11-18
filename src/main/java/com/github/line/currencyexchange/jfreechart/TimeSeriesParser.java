@@ -1,7 +1,7 @@
 package com.github.line.currencyexchange.jfreechart;
 
 import com.github.line.currencyexchange.enums.ChartType;
-import com.github.line.currencyexchange.utils.JsonObjectParser;
+import com.github.line.currencyexchange.service.JsonObjectParser;
 import javafx.util.Pair;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;

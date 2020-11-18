@@ -1,8 +1,6 @@
 package com.github.line.currencyexchange.service;
 
 import com.github.line.currencyexchange.domain.Currency;
-import com.github.line.currencyexchange.utils.JsonCollectionParser;
-import com.github.line.currencyexchange.utils.JsonObjectParser;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
