@@ -1,6 +1,8 @@
-package com.github.line.currencyexchange.utils;
+package com.github.line.currencyexchange.service;
 
 import com.github.line.currencyexchange.domain.Currency;
+import com.github.line.currencyexchange.utils.JsonCollectionParser;
+import com.github.line.currencyexchange.utils.JsonObjectParser;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import java.util.*;
 
 
 @Component
-public class CurrencyParser implements JsonCollectionParser<Currency>, JsonObjectParser<Currency, String>{
+public class CurrencyParser implements JsonCollectionParser<Currency>, JsonObjectParser<Currency, String> {
     @Override
     public Currency parseToObject(JSONObject jsonObject, String key) {
         String value = jsonObject.getString(key);

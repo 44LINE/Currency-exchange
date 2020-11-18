@@ -10,5 +10,4 @@ public interface JsonCollectionParser<T> {
         return jsonObject.keys();
     }
     Collection<T> parseToCollection(JSONObject jsonObject);
-
 }

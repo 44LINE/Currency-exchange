@@ -1,13 +1,16 @@
-package com.github.line.currencyexchange.utils;
+package com.github.line.currencyexchange.service;
 
 import static com.github.line.currencyexchange.utils.ExchangeKeys.*;
 import com.github.line.currencyexchange.domain.Currency;
 import com.github.line.currencyexchange.domain.CurrencyExchange;
+import com.github.line.currencyexchange.utils.JsonObjectParser;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-public class CurrencyExchangeParser implements JsonObjectParser<CurrencyExchange, Double>{
+@Component
+public class CurrencyExchangeParser implements JsonObjectParser<CurrencyExchange, Double> {
 
     @Override
     public CurrencyExchange parseToObject(JSONObject jsonObject, Double amount) {
