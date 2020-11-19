@@ -1,6 +1,7 @@
 package com.github.line.currencyexchange.service;
 
 import com.github.line.currencyexchange.domain.Currency;
+import com.github.line.currencyexchange.utils.AlphaVantageUrlFactory;
 import com.github.line.currencyexchange.utils.JsonFetcher;
 import com.sun.javafx.UnmodifiableArrayList;
 import org.json.JSONObject;
@@ -11,8 +12,6 @@ import java.util.List;
 
 @Service
 public final class CurrencyService {
-    private static final String AVAILABLE_CURRENCIES_URL =
-            "http://openexchangerates.org/api/currencies.json";
     private final JsonCollectionParser<Currency> parser;
     private final JsonFetcher fetcher;
 
@@ -23,8 +22,8 @@ public final class CurrencyService {
     }
 
     public List<Currency> getAll() {
-        JSONObject jsonObject = fetcher.fetch(AVAILABLE_CURRENCIES_URL)
+        JSONObject jsonObject = fetcher.fetch(AlphaVantageUrlFactory.getAvailableCurrenciesUrl())
                 .orElseThrow(RuntimeException::new);
-        return (UnmodifiableArrayList<Currency>) parser.parseToCollection(jsonObject);
+        return (List<Currency>) parser.parseToCollection(jsonObject);
     }
 }

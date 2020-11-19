@@ -13,6 +13,7 @@ public class CurrencyExchangeParser implements JsonObjectParser<CurrencyExchange
 
     @Override
     public CurrencyExchange parseToObject(JSONObject jsonObject, Double amount) {
+        jsonObject = jsonObject.getJSONObject(EXCHANGE_KEY);
         LocalDateTime lastRefreshed = LocalDateTime.parse(jsonObject.getString(LAST_REFRESHED), DATE_FORMATTER);
         Currency from = new Currency(jsonObject.getString(FROM_CURRENCY_NAME), jsonObject.getString(FROM_CURRENCY_CODE));
         Currency to = new Currency(jsonObject.getString(TO_CURRENCY_NAME), jsonObject.getString(TO_CURRENCY_CODE));

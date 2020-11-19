@@ -2,13 +2,13 @@ package com.github.line.currencyexchange.service;
 
 import com.github.line.currencyexchange.enums.ChartType;
 import com.github.line.currencyexchange.jfreechart.BufferedChartBuilder;
+import com.github.line.currencyexchange.utils.AlphaVantageUrlFactory;
+import com.github.line.currencyexchange.utils.ByteArrayFactory;
 import com.github.line.currencyexchange.utils.JsonFetcher;
 import org.jfree.data.time.TimeSeries;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.awt.image.BufferedImage;
 
 @Service
 public class ChartService {
@@ -21,14 +21,19 @@ public class ChartService {
         this.parser = timeSeriesParser;
     }
 
-    public BufferedImage getChart(String currencyCode, String chartType, boolean trendLine, int width, int height) {
+    public byte[] getChart(String currencyCode, String chartType, boolean trendLine, int width, int height) {
         ChartType type = ChartType.valueOf(chartType);
-
-        JSONObject jsonObject = this.fetcher.fetch("url")
+        JSONObject jsonObject = this.fetcher.fetch(AlphaVantageUrlFactory.getTimeSeriesUrl(currencyCode, chartType))
                 .orElseThrow(IllegalStateException::new);
         TimeSeries timeSeries = this.parser.parseToObject(jsonObject, type);
 
         BufferedChartBuilder bufferedChartBuilder = new BufferedChartBuilder(type, currencyCode, timeSeries);
+        setOptionalProperties(bufferedChartBuilder, trendLine, width, height);
+        return ByteArrayFactory.getFromImage(bufferedChartBuilder.build())
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    private void setOptionalProperties(BufferedChartBuilder bufferedChartBuilder, boolean trendLine, int width, int height) {
         if (width > 0) {
             bufferedChartBuilder.setWidth(width);
         }
@@ -38,7 +43,5 @@ public class ChartService {
         if (trendLine) {
             bufferedChartBuilder.addTrendLine();
         }
-
-        return bufferedChartBuilder.build();
     }
 }

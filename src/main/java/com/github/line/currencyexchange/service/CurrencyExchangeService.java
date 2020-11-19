@@ -1,6 +1,7 @@
 package com.github.line.currencyexchange.service;
 
 import com.github.line.currencyexchange.domain.CurrencyExchange;
+import com.github.line.currencyexchange.utils.AlphaVantageUrlFactory;
 import com.github.line.currencyexchange.utils.JsonFetcher;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class CurrencyExchangeService {
     }
 
     public CurrencyExchange exchangeCurrency(String fromCurrencyCode, String toCurrencyCode, Double amount) {
-        JSONObject jsonObject = fetcher.fetch("url")
+        JSONObject jsonObject = fetcher.fetch(AlphaVantageUrlFactory.getExchangeUrl(fromCurrencyCode, toCurrencyCode))
                 .orElseThrow(IllegalStateException::new);
         return parser.parseToObject(jsonObject, amount);
     }
